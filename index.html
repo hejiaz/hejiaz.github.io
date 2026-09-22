@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hejia Zhang</title>
+  <meta name="description" content="Hejia Zhang — Research Scientist at Meta working on LLMs and agents. Ph.D. in Electrical Engineering & Neuroscience, Princeton University.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf8f4;
+      --surface: #ffffff;
+      --ink: #1c1b19;
+      --muted: #6b675f;
+      --faint: #a09a8f;
+      --line: #e8e3d9;
+      --accent: #b4432f;
+      --accent-soft: #f5e6e1;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #151412; --surface: #1d1c19; --ink: #ede9e1; --muted: #a8a295;
+        --faint: #6f6a60; --line: #2e2c28; --accent: #e8866f; --accent-soft: #33241f;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #151412; --surface: #1d1c19; --ink: #ede9e1; --muted: #a8a295;
+      --faint: #6f6a60; --line: #2e2c28; --accent: #e8866f; --accent-soft: #33241f;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--ink);
+      font: 16px/1.65 Inter, system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    nav .brand { font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 18px; }
+    nav ul { display: flex; gap: 26px; list-style: none; font-size: 14px; color: var(--muted); }
+    nav ul a:hover { color: var(--accent); }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1fr 190px; gap: 64px; align-items: center; padding: 88px 0 72px; }
+    .eyebrow { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+    h1 {
+      font-family: Fraunces, Georgia, serif; font-weight: 500;
+      font-size: clamp(44px, 7vw, 64px); line-height: 1.05; letter-spacing: -.02em; margin: 14px 0 22px;
+    }
+    .lede { font-size: 18px; color: var(--muted); max-width: 520px; }
+    .lede strong { color: var(--ink); font-weight: 500; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 15px; border: 1px solid var(--line); border-radius: 999px;
+      font-size: 14px; background: var(--surface); transition: border-color .2s, color .2s;
+    }
+    .pill:hover { border-color: var(--accent); color: var(--accent); }
+    .pill svg { width: 15px; height: 15px; }
+    .photo {
+      width: 100%; aspect-ratio: 1; object-fit: cover; object-position: 100% 62%;
+      border-radius: 50%; border: 6px solid var(--surface);
+      box-shadow: 0 0 0 1px var(--line), 0 20px 40px -20px rgba(40, 30, 20, .4);
+    }
+    .photo-wrap { position: relative; }
+    .photo-wrap .sticker {
+      position: absolute; bottom: 4px; left: -18px; transform: rotate(-8deg);
+      background: var(--ink); color: var(--bg); font-size: 12px; font-weight: 600;
+      padding: 5px 11px; border-radius: 999px; white-space: nowrap;
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+    .hl { background: linear-gradient(transparent 62%, var(--accent-soft) 62%); color: var(--ink); font-weight: 500; }
+
+    /* Arc: brains -> feeds -> LLMs */
+    .arc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 8px; }
+    .stop {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px;
+      position: relative; transition: transform .2s, border-color .2s;
+    }
+    .stop:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .stop .emoji { font-size: 22px; }
+    .stop .k { font-size: 12px; color: var(--faint); letter-spacing: .08em; text-transform: uppercase; margin-top: 8px; font-weight: 600; }
+    .stop .d { font-family: Fraunces, Georgia, serif; font-size: 17px; line-height: 1.3; margin-top: 2px; }
+    .stop.now { border-color: var(--accent); background: var(--accent-soft); }
+    .stop.now .k { color: var(--accent); }
+
+    /* Themes & off-the-clock */
+    .off { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .card { padding: 18px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); transition: transform .25s; }
+    .card:nth-child(odd):hover { transform: rotate(-1.5deg) translateY(-3px); }
+    .card:nth-child(even):hover { transform: rotate(1.5deg) translateY(-3px); }
+    .card .emoji { font-size: 26px; }
+    .card b { display: block; margin-top: 8px; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 18px; }
+    .card span { color: var(--muted); font-size: 14px; line-height: 1.5; display: block; margin-top: 4px; }
+    .note { color: var(--faint); font-size: 14px; margin-top: 16px; font-style: italic; }
+
+    /* Meta phases */
+    .phases { list-style: none; margin-top: 10px; border-left: 2px solid var(--line); padding-left: 18px; }
+    .phases li { position: relative; padding: 5px 0; font-size: 15px; color: var(--muted); display: block; }
+    .phases li::before {
+      content: ""; position: absolute; left: -24px; top: 13px; width: 10px; height: 10px; border-radius: 50%;
+      background: var(--bg); border: 2px solid var(--faint);
+    }
+    .phases li.cur::before { background: var(--accent); border-color: var(--accent); }
+    .phases li b { color: var(--ink); font-weight: 600; }
+    .phases li i { font-style: normal; color: var(--faint); font-size: 13px; font-variant-numeric: tabular-nums; margin-left: 6px; }
+
+    /* Sections */
+    section { padding: 56px 0; border-top: 1px solid var(--line); }
+    h2 {
+      font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 28px; letter-spacing: -.01em;
+      margin-bottom: 28px;
+    }
+    h3 { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); font-weight: 600; margin: 36px 0 14px; }
+    h3:first-of-type { margin-top: 0; }
+    p + p { margin-top: 14px; }
+    .about p { font-size: 17px; max-width: 680px; }
+    .about a, .pub a.t:hover { color: var(--accent); }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .tag { font-size: 13px; padding: 4px 11px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); font-weight: 500; }
+
+    /* Timeline */
+    .tl { list-style: none; }
+    .tl li { display: grid; grid-template-columns: 120px 1fr; gap: 20px; padding: 14px 0; }
+    .tl .when { color: var(--faint); font-size: 14px; font-variant-numeric: tabular-nums; padding-top: 2px; }
+    .tl .role { font-weight: 600; }
+    .tl .org { color: var(--muted); }
+    .tl .desc { color: var(--muted); font-size: 15px; margin-top: 4px; }
+
+    /* Publications */
+    .pubs { list-style: none; }
+    .pub { padding: 16px 0; border-bottom: 1px dashed var(--line); }
+    .pub:last-child { border-bottom: 0; }
+    .pub .t { font-weight: 600; line-height: 1.4; display: inline; }
+    .pub .a { color: var(--muted); font-size: 14.5px; margin-top: 4px; }
+    .pub .a b { color: var(--ink); font-weight: 600; }
+    .pub .v { font-size: 13.5px; margin-top: 6px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .venue { font-weight: 600; color: var(--accent); }
+    .year { color: var(--faint); }
+    .pub .v a { color: var(--muted); border-bottom: 1px solid var(--line); }
+    .pub .v a:hover { color: var(--accent); border-color: var(--accent); }
+    details.more summary {
+      cursor: pointer; list-style: none; margin-top: 18px; font-size: 14px; color: var(--accent); font-weight: 500;
+    }
+    details.more summary::-webkit-details-marker { display: none; }
+    details.more[open] summary .closed, details.more:not([open]) summary .open { display: none; }
+
+    /* Misc grid */
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .plain { list-style: none; }
+    .plain li { padding: 6px 0; display: flex; justify-content: space-between; gap: 16px; font-size: 15px; }
+    .plain li span:last-child { color: var(--faint); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+    footer { padding: 40px 0 64px; border-top: 1px solid var(--line); color: var(--faint); font-size: 14px; }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+    @media (max-width: 720px) {
+      .arc, .off { grid-template-columns: 1fr 1fr; }
+      .photo-wrap { max-width: 150px; order: -1; }
+      nav ul { display: none; }
+      .hero { grid-template-columns: 1fr; gap: 36px; padding: 48px 0; }
+      .photo-wrap .sticker { left: 60%; }
+      .tl li { grid-template-columns: 1fr; gap: 2px; }
+      .grid2 { grid-template-columns: 1fr; gap: 8px; }
+      .wrap { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#">hejia<span style="color:var(--accent)">.</span></a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#life">Life</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Research Scientist · Meta</div>
+      <h1>Hejia Zhang</h1>
+      <p class="lede">I work on <span class="hl">large language models</span> and the <span class="hl">agents</span> built on them: how we measure them, what they learn from, and how they keep improving once they're out in the world. I was trained as an electrical engineer and neuroscientist, so I tend to look at learning as a system, not just a model.</p>
+      <div class="links">
+        <a class="pill" href="mailto:zhanghejia2010@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email</a>
+        <a class="pill" href="https://github.com/hejiaz">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>GitHub</a>
+      </div>
+    </div>
+    <div class="photo-wrap"><img class="photo" src="profile.jpg" alt="Hejia Zhang hiking at Mount Rainier"><span class="sticker">⛰ found on trails</span></div>
+  </header>
+
+  <section id="about" class="about">
+    <h2>About</h2>
+    <p>I'm a Research Scientist at <strong>Meta</strong>. These days I work on business agents: routing requests across models, and helping agents improve themselves from experience. Before that I was tech lead for LLM evaluation and then evaluation&nbsp;+&nbsp;data, and started on LLMs with factuality and long-context work on Llama. My first years at Meta went to <strong>integrity</strong> and <strong>recommendation</strong>, where I learned how large learning systems behave once they meet the real world.</p>
+    <p>I received a joint Ph.D. in <strong>Electrical Engineering and Neuroscience</strong> from <a href="https://www.princeton.edu">Princeton</a> in 2020, co-advised by <a href="https://ece.princeton.edu/people/peter-j-ramadge">Peter Ramadge</a>, whose work spans signal processing, control and machine learning, and <a href="https://compmem.princeton.edu">Ken Norman</a>, who studies how brains learn and remember. My thesis developed machine learning methods for multi-subject fMRI, and I helped build the open-source <a href="https://brainiak.org">BrainIAK</a> toolkit. Before that, a B.S. in Electrical Engineering from <a href="https://www.rice.edu">Rice</a>.</p>
+    <p>That mix of engineering and neuroscience still shapes the questions I care about most: how learning systems adapt from their own experience, and how many of them can work well together. Outside of work I build my own tools, mostly to get out of my own way.</p>
+    <div class="arc">
+      <div class="stop"><div class="emoji">🧠</div><div class="k">2014–2020</div><div class="d">Learning from brains</div></div>
+      <div class="stop"><div class="emoji">🛡️</div><div class="k">2019–2021</div><div class="d">Integrity</div></div>
+      <div class="stop"><div class="emoji">📰</div><div class="k">2021–2023</div><div class="d">Recommendation</div></div>
+      <div class="stop now"><div class="emoji">🤖</div><div class="k">2023–now</div><div class="d">LLMs &amp; agents</div></div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <h2>Selective Publications</h2>
+
+    <h3>Large Language Models · Meta</h3>
+    <ul class="pubs">
+      <li class="pub">
+        <a class="t" href="https://arxiv.org/abs/2511.10507">AdvancedIF: Rubric-Based Benchmarking and Reinforcement Learning for Advancing LLM Instruction Following</a>
+        <div class="a">Yun He, Wenzhe Li, <b>Hejia Zhang</b>, Songlin Li, Karishma Mandyam, … , Manaal Faruqui</div>
+        <div class="v"><span class="venue">ACL</span><span class="year">2026</span><a href="https://arxiv.org/abs/2511.10507">arXiv</a></div>
+      </li>
+      <li class="pub">
+        <a class="t" href="https://arxiv.org/abs/2510.15242">Bradley-Terry Policy Optimization for Generative Preference Modeling</a>
+        <div class="a">Shengyu Feng, Yun He, Shuang Ma, … , <b>Hejia Zhang</b>, Karthik Abinav Sankararaman, Han Fang, Yiming Yang, Manaal Faruqui</div>
+        <div class="v"><span class="venue">Preprint</span><span class="year">2025</span><a href="https://arxiv.org/abs/2510.15242">arXiv</a></div>
+      </li>
+      <li class="pub">
+        <a class="t" href="https://arxiv.org/abs/2410.18359">Improving Model Factuality with Fine-grained Critique-based Evaluator</a>
+        <div class="a">Yiqing Xie, Wenxuan Zhou, Pradyot Prakash, Di Jin, Yuning Mao, … , Carolyn Rose, Daniel Fried, <b>Hejia Zhang</b></div>
+        <div class="v"><span class="venue">ACL</span><span class="year">2025</span><a href="https://arxiv.org/abs/2410.18359">arXiv</a></div>
+      </li>
+      <li class="pub">
+        <a class="t" href="https://arxiv.org/abs/2410.15553">Multi-IF: Benchmarking LLMs on Multi-Turn and Multilingual Instructions Following</a>
+        <div class="a">Yun He, Di Jin, Chaoqi Wang, Chloe Bi, Karishma Mandyam, <b>Hejia Zhang</b>, … , Han Fang, Sinong Wang</div>
+        <div class="v"><span class="venue">Preprint</span><span class="year">2024</span><a href="https://arxiv.org/abs/2410.15553">arXiv</a></div>
+      </li>
+      <li class="pub">
+        <a class="t" href="https://arxiv.org/abs/2409.20370">The Perfect Blend: Redefining RLHF with Mixture of Judges</a>
+        <div class="a">Tengyu Xu, Eryk Helenowski, Karthik Abinav Sankararaman, … , <b>Hejia Zhang</b>, … , Sinong Wang, Han Fang</div>
+        <div class="v"><span class="venue">Preprint</span><span class="year">2024</span><a href="https://arxiv.org/abs/2409.20370">arXiv</a></div>
+      </li>
+      <li class="pub">
+        <a class="t" href="https://arxiv.org/abs/2309.16039">Effective Long-Context Scaling of Foundation Models</a>
+        <div class="a">Wenhan Xiong, Jingyu Liu, Igor Molybog, <b>Hejia Zhang</b>, Prajjwal Bhargava, … , Mike Lewis, Sinong Wang, Hao Ma</div>
+        <div class="v"><span class="venue">NAACL</span><span class="year">2024</span><a href="https://arxiv.org/abs/2309.16039">arXiv</a></div>
+      </li>
+    </ul>
+
+    <h3>Machine Learning for Neuroscience · Princeton</h3>
+    <ul class="pubs">
+      <li class="pub">
+        <a class="t" href="https://doi.org/10.1371/journal.pcbi.1007549">BrainIAK tutorials: User-friendly learning materials for advanced fMRI analysis</a>
+        <div class="a">Manoj Kumar, Cameron T. Ellis, Qihong Lu, <b>Hejia Zhang</b>, et al.</div>
+        <div class="v"><span class="venue">PLoS Computational Biology</span><span class="year">2020</span></div>
+      </li>
+      <li class="pub">
+        <a class="t" href="https://arxiv.org/abs/2005.04879">Incorporating structured assumptions with probabilistic graphical models in fMRI data analysis</a>
+        <div class="a">Ming Bo Cai, Michael Shvartsman, Anqi Wu, <b>Hejia Zhang</b>, Xia Zhu</div>
+        <div class="v"><span class="venue">Neuropsychologia</span><span class="year">2020</span><a href="https://arxiv.org/abs/2005.04879">arXiv</a></div>
+      </li>
+      <li class="pub">
+        <a class="t" href="http://proceedings.mlr.press/v84/zhang18b.html">Transfer learning on fMRI datasets</a>
+        <div class="a"><b>Hejia Zhang</b>, Po-Hsuan Chen, Peter J. Ramadge</div>
+        <div class="v"><span class="venue">AISTATS</span><span class="year">2018</span></div>
+      </li>
+      <li class="pub">
+        <a class="t" href="https://arxiv.org/abs/1711.06636">Segmenting Brain Tumors with Symmetry</a>
+        <div class="a"><b>Hejia Zhang</b>, Xia Zhu, Theodore L. Willke</div>
+        <div class="v"><span class="venue">NeurIPS ML4H Workshop</span><span class="year">2017</span><a href="https://arxiv.org/abs/1711.06636">arXiv</a></div>
+      </li>
+      <li class="pub">
+        <a class="t" href="https://arxiv.org/abs/1609.09432">A Searchlight Factor Model Approach for Locating Shared Information in Multi-Subject fMRI Analysis</a>
+        <div class="a"><b>Hejia Zhang</b>, Po-Hsuan Chen, Janice Chen, Xia Zhu, Javier S. Turek, Theodore L. Willke, Uri Hasson, Peter J. Ramadge</div>
+        <div class="v"><span class="venue">NeurIPS Workshop · Brains and Bits</span><span class="year">2016</span><a href="https://arxiv.org/abs/1609.09432">arXiv</a></div>
+      </li>
+      <li class="pub">
+        <a class="t" href="https://arxiv.org/abs/1608.04846">A Convolutional Autoencoder for Multi-Subject fMRI Data Aggregation</a>
+        <div class="a">Po-Hsuan Chen, Xia Zhu, <b>Hejia Zhang</b>, Javier S. Turek, Janice Chen, Theodore L. Willke, Uri Hasson, Peter J. Ramadge</div>
+        <div class="v"><span class="venue">NeurIPS Workshop</span><span class="year">2016</span><a href="https://arxiv.org/abs/1608.04846">arXiv</a></div>
+      </li>
+    </ul>
+
+    <details class="more">
+      <summary><span class="closed">Show earlier work &amp; abstracts ↓</span><span class="open">Hide earlier work ↑</span></summary>
+      <ul class="pubs">
+        <li class="pub"><span class="t">Multitask Metric Learning: Theory and Algorithm</span>
+          <div class="a">Boyu Wang, <b>Hejia Zhang</b>, Joelle Pineau, Kenneth Norman</div>
+          <div class="v"><span class="venue">Preprint</span><span class="year">2018</span></div></li>
+        <li class="pub"><span class="t">Multi-subject fMRI data factor analysis using BrainIAK</span>
+          <div class="a"><b>Hejia Zhang</b>, Po-Hsuan Chen, Peter J. Ramadge</div>
+          <div class="v"><span class="venue">SfN Annual Meeting</span><span class="year">2017</span></div></li>
+        <li class="pub"><span class="t">Learning Factor Models Using Multi-dataset, Multi-subject fMRI Data</span>
+          <div class="a"><b>Hejia Zhang</b>, Po-Hsuan Chen, Peter J. Ramadge</div>
+          <div class="v"><span class="venue">CRCNS</span><span class="year">2017</span></div></li>
+        <li class="pub"><span class="t">Searchlight Factor Models in Multi-Subject fMRI Analysis</span>
+          <div class="a"><b>Hejia Zhang</b>, Po-Hsuan Chen, Janice Chen, Xia Zhu, Javier S. Turek, Theodore L. Willke, Uri Hasson, Peter J. Ramadge</div>
+          <div class="v"><span class="venue">CRCNS</span><span class="year">2016</span></div></li>
+        <li class="pub"><span class="t">Attention to automatic movements in Parkinson's disease: Modified automatic mode in the striatum</span>
+          <div class="a">Tao Wu, Jun Liu, <b>Hejia Zhang</b>, Mark Hallett, Zheng Zheng, Piu Chan</div>
+          <div class="v"><span class="venue">Cerebral Cortex</span><span class="year">2015</span></div></li>
+        <li class="pub"><span class="t">Scale- and orientation-invariant keypoints in higher-dimensional data</span>
+          <div class="a">Blaine Rister, Daniel Reiter, <b>Hejia Zhang</b>, Daniel Volz, Mark Horowitz, Refaat E. Gabr, Joseph R. Cavallaro</div>
+          <div class="v"><span class="venue">IEEE ICIP</span><span class="year">2015</span></div></li>
+        <li class="pub"><span class="t">An Efficient Distributed Approach for Processing Sparse Shift-Diagonal Matrices</span>
+          <div class="a"><b>Hejia Zhang</b>, Azalia Mirhoseini, Farinaz Koushanfar</div>
+          <div class="v"><span class="venue">Rice Undergraduate Research Symposium</span><span class="year">2013</span></div></li>
+      </ul>
+    </details>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <h3>Industry</h3>
+    <ul class="tl">
+      <li><div class="when">2019 — now</div><div>
+        <div class="role">Research Scientist <span class="org">· Meta</span></div>
+        <div class="desc">Joined as a research intern in Integrity (summer 2019), full-time since 2020.</div>
+        <ul class="phases">
+          <li><b>Integrity</b><i>2019–2021</i> — ML for keeping the platforms safe.</li>
+          <li><b>Recommendation</b><i>2021–2023</i> — ranking and personalization at scale.</li>
+          <li><b>LLMs: factuality &amp; long context</b><i>2023–</i> — Llama long-context scaling; critique-based factuality evaluation.</li>
+          <li><b>Tech lead, LLM evaluation</b> — benchmarks and eval systems for instruction following and model quality.</li>
+          <li><b>Tech lead, evaluation + data</b> — connecting what we measure to what models train on.</li>
+          <li class="cur"><b>Business agents</b><i>now</i> — model routing and agent self-improvement.</li>
+        </ul></div></li>
+      <li><div class="when">Summer 2018</div><div>
+        <div class="role">Applied Research Scientist Intern <span class="org">· eBay</span></div>
+        <div class="desc">Multi-label query classification.</div></div></li>
+      <li><div class="when">Summer 2017</div><div>
+        <div class="role">Graduate Technical Intern <span class="org">· Intel</span></div>
+        <div class="desc">Neuroimaging analysis methods and implementation.</div></div></li>
+    </ul>
+    <h3>Education</h3>
+    <ul class="tl">
+      <li><div class="when">2014 — 2020</div><div>
+        <div class="role">Ph.D., Electrical Engineering &amp; Neuroscience <span class="org">· Princeton University</span></div>
+        <div class="desc">Co-advised by Peter J. Ramadge &amp; Ken Norman. Machine learning for multi-subject fMRI analysis.</div></div></li>
+      <li><div class="when">2010 — 2014</div><div>
+        <div class="role">B.S., Electrical Engineering <span class="org">· Rice University</span></div>
+        <div class="desc">Summa cum laude · Minor in Computational and Applied Mathematics.</div></div></li>
+    </ul>
+  </section>
+
+  <section id="life">
+    <h2>Off the clock</h2>
+    <div class="off">
+      <div class="card"><div class="emoji">🧱</div><b>LEGO</b><span>Step-by-step instruction following, the analog version.</span></div>
+      <div class="card"><div class="emoji">🎤</div><b>Singing</b><span>More enthusiasm than training. Karaoke-grade, happily.</span></div>
+      <div class="card"><div class="emoji">📜</div><b>Chinese history</b><span>Dynasties, reforms, and why some systems hold together while others drift.</span></div>
+      <div class="card"><div class="emoji">🥟</div><b>Cooking</b><span>Recipes as a prior; tasting as the update.</span></div>
+    </div>
+    <p class="note">An amateur in all four, and planning to stay that way.</p>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <span>zhanghejia2010@gmail.com</span>
+    <span>Built between hikes · © 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
