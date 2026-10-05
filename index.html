@@ -213,7 +213,7 @@
 
   <section id="about" class="about">
     <h2>About</h2>
-    <p>I'm a Research Scientist at <strong>Meta</strong>. These days I work on business agents: routing requests across models, and helping agents improve themselves from experience. Before that I was tech lead for LLM evaluation and then evaluation&nbsp;+&nbsp;data, and started on LLMs with factuality and long-context work on Llama. My first years at Meta went to <strong>integrity</strong> and <strong>recommendation</strong>, where I learned how large learning systems behave once they meet the real world.</p>
+    <p>I'm a Research Scientist at <strong>Meta</strong>. These days I work on business agents: routing requests across models, and helping agents improve themselves from experience. Before that I founded and led Meta AI's centralized evaluation system, then took on the data flywheel so evaluation could drive training directly. I started on LLMs with factuality and long-context work on Llama. My first years at Meta went to <strong>integrity</strong> and <strong>recommendation</strong>, where I learned how large learning systems behave once they meet the real world.</p>
     <p>I received a joint Ph.D. in <strong>Electrical Engineering and Neuroscience</strong> from <a href="https://www.princeton.edu">Princeton</a> in 2020, co-advised by <a href="https://ece.princeton.edu/people/peter-j-ramadge">Peter Ramadge</a>, whose work spans signal processing, control and machine learning, and <a href="https://compmem.princeton.edu">Ken Norman</a>, who studies how brains learn and remember. My thesis developed machine learning methods for multi-subject fMRI, and I helped build the open-source <a href="https://brainiak.org">BrainIAK</a> toolkit. Before that, a B.S. in Electrical Engineering from <a href="https://www.rice.edu">Rice</a>.</p>
     <p>That mix of engineering and neuroscience still shapes the questions I care about most: how learning systems adapt from their own experience, and how many of them can work well together. Outside of work I build my own tools, mostly to get out of my own way.</p>
     <div class="arc">
@@ -261,8 +261,13 @@
       </li>
     </ul>
 
-    <h3>Machine Learning for Neuroscience · Princeton</h3>
+    <h3>Machine Learning &amp; Neuroscience · Princeton</h3>
     <ul class="pubs">
+      <li class="pub">
+        <a class="t" href="https://doi.org/10.52294/31bb5b68-2184-411b-8c00-a1dacb61e1da">BrainIAK: The Brain Imaging Analysis Kit</a>
+        <div class="a">Manoj Kumar, Michael J. Anderson, James W. Antony, Christopher Baldassano, … , <b>Hejia Zhang</b>, … , Kenneth A. Norman</div>
+        <div class="v"><span class="venue">Aperture Neuro</span><span class="year">2022</span></div>
+      </li>
       <li class="pub">
         <a class="t" href="https://doi.org/10.1371/journal.pcbi.1007549">BrainIAK tutorials: User-friendly learning materials for advanced fMRI analysis</a>
         <div class="a">Manoj Kumar, Cameron T. Ellis, Qihong Lu, <b>Hejia Zhang</b>, et al.</div>
@@ -272,6 +277,16 @@
         <a class="t" href="https://arxiv.org/abs/2005.04879">Incorporating structured assumptions with probabilistic graphical models in fMRI data analysis</a>
         <div class="a">Ming Bo Cai, Michael Shvartsman, Anqi Wu, <b>Hejia Zhang</b>, Xia Zhu</div>
         <div class="v"><span class="venue">Neuropsychologia</span><span class="year">2020</span><a href="https://arxiv.org/abs/2005.04879">arXiv</a></div>
+      </li>
+      <li class="pub">
+        <a class="t" href="https://proceedings.mlr.press/v89/wang19f.html">Multitask Metric Learning: Theory and Algorithm</a>
+        <div class="a">Boyu Wang, <b>Hejia Zhang</b>, Peng Liu, Zebang Shen, Joelle Pineau</div>
+        <div class="v"><span class="venue">AISTATS · Oral</span><span class="year">2019</span></div>
+      </li>
+      <li class="pub">
+        <a class="t" href="https://ceur-ws.org/Vol-2410/paper19.pdf">System Design of Extreme Multi-label Query Classification using a Hybrid Model</a>
+        <div class="a">Xianjing Liu*, <b>Hejia Zhang</b>*, Mingkuan Liu, Alan Lu <span style="white-space:nowrap">(* equal contribution; work done at eBay)</span></div>
+        <div class="v"><span class="venue">SIGIR Workshop on eCommerce</span><span class="year">2019</span></div>
       </li>
       <li class="pub">
         <a class="t" href="http://proceedings.mlr.press/v84/zhang18b.html">Transfer learning on fMRI datasets</a>
@@ -298,9 +313,6 @@
     <details class="more">
       <summary><span class="closed">Show earlier work &amp; abstracts ↓</span><span class="open">Hide earlier work ↑</span></summary>
       <ul class="pubs">
-        <li class="pub"><span class="t">Multitask Metric Learning: Theory and Algorithm</span>
-          <div class="a">Boyu Wang, <b>Hejia Zhang</b>, Joelle Pineau, Kenneth Norman</div>
-          <div class="v"><span class="venue">Preprint</span><span class="year">2018</span></div></li>
         <li class="pub"><span class="t">Multi-subject fMRI data factor analysis using BrainIAK</span>
           <div class="a"><b>Hejia Zhang</b>, Po-Hsuan Chen, Peter J. Ramadge</div>
           <div class="v"><span class="venue">SfN Annual Meeting</span><span class="year">2017</span></div></li>
@@ -331,12 +343,12 @@
         <div class="role">Research Scientist <span class="org">· Meta</span></div>
         <div class="desc">Joined as a research intern in Integrity (summer 2019), full-time since 2020.</div>
         <ul class="phases">
-          <li><b>Integrity</b><i>2019–2021</i> — ML for keeping the platforms safe.</li>
-          <li><b>Recommendation</b><i>2021–2023</i> — ranking and personalization at scale.</li>
-          <li><b>LLMs: factuality &amp; long context</b><i>2023–</i> — Llama long-context scaling; critique-based factuality evaluation.</li>
-          <li><b>Tech lead, LLM evaluation</b> — benchmarks and eval systems for instruction following and model quality.</li>
-          <li><b>Tech lead, evaluation + data</b> — connecting what we measure to what models train on.</li>
-          <li class="cur"><b>Business agents</b><i>now</i> — model routing and agent self-improvement.</li>
+          <li><b>Integrity</b><i>2019–2021</i> — end-to-end detection of the most severe harmful content: training data, model ensembles, offline evaluation and monitoring.</li>
+          <li><b>Recommendation</b><i>2021–2023</i> — a user–content understanding model, shipped by a team I led as ranking features across Instagram and Facebook.</li>
+          <li><b>Llama factuality &amp; long context</b><i>2023</i> — cutting hallucinations; Llama 2 Long.</li>
+          <li><b>Founder &amp; tech lead, Meta AI evaluation</b><i>Q4 2023–Q1 2025</i> — a centralized evaluation system built from scratch (auto-judges, benchmarks, online proxies, failure-mode mining) that supported every Meta AI launch.</li>
+          <li><b>Tech lead, evaluation + data flywheel</b><i>Q1–Q3 2025</i> — letting what we measure automatically drive what models learn.</li>
+          <li class="cur"><b>Self-improving agents &amp; model routing</b><i>Q3 2025–now</i> — routing requests across models, and agents that improve the router themselves.</li>
         </ul></div></li>
       <li><div class="when">Summer 2018</div><div>
         <div class="role">Applied Research Scientist Intern <span class="org">· eBay</span></div>
